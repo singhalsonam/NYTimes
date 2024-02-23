@@ -10,6 +10,6 @@ data class Media (
   @SerializedName("caption"                  ) var caption                : String?                   = null,
   @SerializedName("copyright"                ) var copyright              : String?                   = null,
   @SerializedName("approved_for_syndication" ) var approvedForSyndication : Int?                      = null,
-  @SerializedName("media-metadata"           ) var mediaMetadata         : ArrayList<MediaMetadata> = arrayListOf()
+  @SerializedName("media-metadata"           ) var mediaMetadata         : ArrayList<MediaMetadata?> = arrayListOf()
 
 )

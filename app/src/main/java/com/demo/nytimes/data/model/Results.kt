@@ -25,7 +25,7 @@ data class Results (
   @SerializedName("org_facet"      ) var orgFacet      : ArrayList<String> = arrayListOf(),
   @SerializedName("per_facet"      ) var perFacet      : ArrayList<String> = arrayListOf(),
   @SerializedName("geo_facet"      ) var geoFacet      : ArrayList<String> = arrayListOf(),
-  @SerializedName("media"          ) var media         : ArrayList<Media>  = arrayListOf(),
+  @SerializedName("media"          ) var media         : ArrayList<Media?>  = arrayListOf(),
   @SerializedName("eta_id"         ) var etaId         : Int?              = null
 
 )
