@@ -1,6 +1,5 @@
 package com.demo.nytimes.ui
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,24 +12,21 @@ import retrofit2.Response
 class NYViewModel : ViewModel() {
     private val nyRepository = NYRepository()
     private val resultLiveData = MutableLiveData<Results?>()
-    private val articleListLiveData = MutableLiveData<List<Results>?>()
+    val articleListLiveData = MutableLiveData<List<Results>?>()
 
     /**
     Function to fetch mostViewed articles from repository
      */
     fun fetchMostViewedArticles() {
-        Log.d("NYViewModel","fetchMostViewedArticles called")
-        viewModelScope.launch {
-            getArticleList(nyRepository.fetchMostViewedArticles())
+        viewModelScope.launch {getArticleList(nyRepository.fetchMostViewedArticles())
         }
+
     }
 
     /**
      * Method to generate list of the most viewed articles in NY Times
      */
     private fun getArticleList(response: Response<Articles?>?) {
-        Log.d("NYViewModel","getArticleList called")
-            Log.d("NYViewModel","getArticleList isSuccessful: $response")
            response?.let {
                if (response.isSuccessful) {
                    response.body()?.let {
@@ -48,7 +44,7 @@ class NYViewModel : ViewModel() {
     fun getArticleById(id: Double) {
         articleListLiveData.value?.let { resultsList ->
             resultLiveData.postValue(resultsList.find { it.id == id })
-            Log.d("NYViewModel","getArticleById isSuccessful: ${resultLiveData.value}")
+         //   Log.d("NYViewModel","getArticleById isSuccessful: ${resultLiveData.value}")
         }
     }
 

@@ -1,6 +1,5 @@
 package com.demo.nytimes.ui
 
-import androidx.lifecycle.MutableLiveData
 import com.demo.nytimes.data.model.Articles
 import com.demo.nytimes.data.source.remote.NYApi
 import com.demo.nytimes.data.source.remote.RetrofitInstance
@@ -9,6 +8,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Response
 
+/**
+ * NYRepository to do required API calls
+ */
 class NYRepository {
 
     /**

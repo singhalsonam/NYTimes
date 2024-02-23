@@ -35,17 +35,16 @@ class FragmentMostPopular : Fragment() {
      * get and populate most viewed article list
      */
     private fun observeMostViewedArticles() {
+        val nyActivity = requireActivity() as NYActivity
         nyViewModel.articles.observe(viewLifecycleOwner, Observer {
+            nyActivity.hideProgressBar()
             Log.d("FragmentMostPopular","ItemList: $it")
             nyAdapter.setUpArticleList(it?: emptyList())
             nyAdapter.onItemClick = { result ->
                 Log.d("FragmentMostPopular",result.title?:"empty")
                 result.id?.let { it1 -> nyViewModel.getArticleById(it1) }
-                val nyActivity = requireActivity() as NYActivity
                 nyActivity.changeFragment(FragmentDetail())
             }
         })
     }
-
-
 }
